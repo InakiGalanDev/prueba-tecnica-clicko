@@ -1,0 +1,11 @@
+$kind: http-request
+method: POST
+url: '{{base_url}}/api/users'
+order: 3000
+body:
+  type: json
+  content: |-
+    {
+      "name": "",
+      "email": "no-es-email"
+    }

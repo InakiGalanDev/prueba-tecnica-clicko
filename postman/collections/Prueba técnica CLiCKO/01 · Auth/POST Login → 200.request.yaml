@@ -1,0 +1,21 @@
+$kind: http-request
+method: POST
+url: '{{base_url}}/api/login'
+order: 4000
+body:
+  type: json
+  content: |-
+    {
+      "email": "{{login_email}}",
+      "password": "{{login_password}}"
+    }
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      if (pm.response.code === 200) {
+          const body = pm.response.json();
+          if (body.data && body.data.id) {
+              pm.collectionVariables.set('user_id', body.data.id);
+          }
+      }

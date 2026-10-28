@@ -1,0 +1,23 @@
+$kind: http-request
+method: POST
+url: '{{base_url}}/api/users'
+order: 2000
+body:
+  type: json
+  content: |-
+    {
+      "name": "Nuevo Usuario",
+      "email": "nuevo.{{$timestamp}}@ejemplo.com",
+      "password": "password123"
+    }
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      if (pm.response.code === 201) {
+          const body = pm.response.json();
+          if (body.data && body.data.id) {
+              pm.collectionVariables.set('user_id', body.data.id);
+              pm.collectionVariables.set('user_email', body.data.email);
+          }
+      }

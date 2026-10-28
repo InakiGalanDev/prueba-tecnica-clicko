@@ -1,0 +1,10 @@
+$kind: http-request
+method: PUT
+url: '{{base_url}}/api/users/{{user_id}}'
+order: 7000
+body:
+  type: json
+  content: |-
+    {
+      "name": "Usuario Actualizado"
+    }

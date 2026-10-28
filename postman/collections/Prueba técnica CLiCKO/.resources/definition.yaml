@@ -1,4 +1,20 @@
 $kind: collection
-variables:
-  base_url: ""
-  user_id: ""
+name: 'Prueba técnica CLiCKO'
+scripts:
+  - type: http:beforeRequest
+    language: text/javascript
+    code: |-
+      pm.request.headers.upsert({ key: 'Accept', value: 'application/json' });
+      const xsrfToken = pm.cookies.get('XSRF-TOKEN');
+      if (xsrfToken) {
+          pm.request.headers.upsert({ key: 'X-XSRF-TOKEN', value: decodeURIComponent(xsrfToken) });
+      }
+  - type: http:afterResponse
+    language: text/javascript
+    code: |-
+      const match = pm.info.requestName.match(/→\s*(\d{3})$/);
+      if (match) {
+          pm.test('Status code is ' + match[1], function () {
+              pm.response.to.have.status(parseInt(match[1]));
+          });
+      }

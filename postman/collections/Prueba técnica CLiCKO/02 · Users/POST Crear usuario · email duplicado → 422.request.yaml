@@ -1,0 +1,12 @@
+$kind: http-request
+method: POST
+url: '{{base_url}}/api/users'
+order: 4000
+body:
+  type: json
+  content: |-
+    {
+      "name": "Usuario Duplicado",
+      "email": "{{user_email}}",
+      "password": "password123"
+    }

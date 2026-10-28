@@ -1,12 +1,8 @@
 name: Local
 values:
   - key: base_url
-    value: ''
+    value: 'http://localhost:8000'
   - key: login_email
-    value: ''
+    value: 'admin@clicko.es'
   - key: login_password
-    value: ''
-  - key: user_id
-    value: ''
-  - key: user_email
-    value: ''
+    value: 'password'
