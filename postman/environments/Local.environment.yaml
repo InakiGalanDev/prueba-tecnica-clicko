@@ -1,0 +1,12 @@
+name: Local
+values:
+  - key: base_url
+    value: ''
+  - key: login_email
+    value: ''
+  - key: login_password
+    value: ''
+  - key: user_id
+    value: ''
+  - key: user_email
+    value: ''
